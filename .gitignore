@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Models & data
+models/*.joblib
+models/*.pkl
+*.csv
+*.zip
+data/*.csv
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Streamlit
+.streamlit/
