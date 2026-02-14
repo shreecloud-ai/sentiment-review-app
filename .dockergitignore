@@ -1,0 +1,23 @@
+# Ignore everything by default
+*
+
+# Then explicitly allow what we need
+!app/
+!streamlit_app/
+!models/
+!requirements.txt
+!Dockerfile
+!entrypoint.sh          # we'll create this next
+
+# Still ignore heavy/unneeded stuff
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+venv/
+.env
+*.log
+data/*.csv              # ← don't include raw data in image
+notebooks/
