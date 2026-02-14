@@ -1,46 +1,22 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from app.model.predict import predict_sentiment   # ← remove predict_batch
+from app.model.predict import predict_sentiment
 
-app = FastAPI(
-    title="Product Review Sentiment Analyzer",
-    description="Simple NLP API to classify review sentiment (positive / neutral / negative)",
-    version="0.1.0"
-)
-
+app = FastAPI(title="Sentiment Prediction API")
 
 class ReviewRequest(BaseModel):
     text: str
 
+@app.get("/health")
+def health():
+    return {"status": "healthy"}
 
-class BatchReviewRequest(BaseModel):
-    texts: list[str]
-
-
-@app.get("/")
-def root():
-    return {"message": "Sentiment Analyzer API is running. Try /docs for Swagger UI"}
-
-
-@app.post("/predict", response_model=dict)
-def predict_single(review: ReviewRequest):
+@app.post("/predict")
+def predict(review: ReviewRequest):
     try:
         result = predict_sentiment(review.text)
+        if "error" in result:
+            raise HTTPException(status_code=500, detail=result["error"])
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-
-# @app.post("/predict_batch", response_model=list[dict])
-# def predict_multiple(reviews: BatchReviewRequest):
-#     try:
-#         results = predict_batch(reviews.texts)
-#         return results
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=str(e))
-
-
-# Optional health check
-@app.get("/health")
-def health_check():
-    return {"status": "healthy", "model_loaded": pipeline is not None}
