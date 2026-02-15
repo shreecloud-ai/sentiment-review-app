@@ -7,7 +7,7 @@ from datetime import datetime
 # CONFIG
 # ──────────────────────────────────────────────
 
-API_URL = "http://127.0.0.1:8000/predict"  # ← change to your deployed URL later
+API_URL = "https://sentiment-review-api.onrender.com"  # ← change to your deployed URL later
 APP_TITLE = "Product Review Sentiment Analyzer"
 
 # ──────────────────────────────────────────────
