@@ -6,9 +6,14 @@ from datetime import datetime
 # ──────────────────────────────────────────────
 # CONFIG
 # ──────────────────────────────────────────────
+import os
 
-API_URL = "https://sentiment-review-api.onrender.com"  # ← change to your deployed URL later
-APP_TITLE = "Product Review Sentiment Analyzer"
+BACKEND_URL = os.getenv(
+    "BACKEND_URL",
+    "https://sentiment-review-api.onrender.com"
+)
+API_URL = f"{BACKEND_URL}/predict"
+APP_TITLE=SENTIMENT_REVIEW_APP
 
 # ──────────────────────────────────────────────
 # SESSION STATE INIT
@@ -136,5 +141,3 @@ if st.session_state.results:
 import os
 
 # Use environment variable for flexibility (local vs cloud)
-BACKEND_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
-API_URL = f"{BACKEND_URL}/predict"
