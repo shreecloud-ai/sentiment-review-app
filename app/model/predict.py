@@ -6,9 +6,9 @@ MODEL_PATH = "models/sentiment_model.joblib"
 
 try:
     pipeline = joblib.load(MODEL_PATH)
-    print("Sentiment model loaded successfully")
+    print(f"[STARTUP] Model loaded successfully from {MODEL_PATH} (size: {os.path.getsize(MODEL_PATH)/1e6:.1f} MB)")
 except Exception as e:
-    print(f"Error loading model: {e}")
+    print(f"[STARTUP ERROR] Failed to load model: {str(e)}")
     pipeline = None
 
 
