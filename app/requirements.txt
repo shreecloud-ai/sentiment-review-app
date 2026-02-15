@@ -1,0 +1,10 @@
+pandas
+duckdb
+scikit-learn
+joblib
+fastapi
+uvicorn
+streamlit
+requests
+pydantic
+python-multipart   # if using file uploads later
