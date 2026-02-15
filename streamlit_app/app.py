@@ -13,7 +13,7 @@ BACKEND_URL = os.getenv(
     "https://sentiment-review-api.onrender.com"
 )
 API_URL = f"{BACKEND_URL}/predict"
-APP_TITLE=SENTIMENT_REVIEW_APP
+APP_TITLE="Product Review Sentiment Analyzer"
 
 # ──────────────────────────────────────────────
 # SESSION STATE INIT
